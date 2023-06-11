@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather Hosting(Netlify)</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-5">
+              <input
+                type="search"
+                placeholder="Type a city.."
+                autofocus="on"
+                autocomplete="off"
+                id="city-input"
+                class="form-control shadow-sm"
+              />
+            </div>
+            <div class="col-4">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm"
+              />
+            </div>
+          </div>
+        </form>
+        <h1 id="city">Raleigh</h1>
+        <ul>
+          <li id="date"></li>
+          <li>Partly Cloudy</li>
+        </ul>
+        <div class="row">
+          <div class="col-6">
+            <div class="clearfix">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="Cloudy icon"
+                class="weather-icon float-left"
+              />
+              <div class="float-left">
+                <span class="temperature" id="temperature">28</span
+                ><span class="units">
+                  <a href="#" id="celcius-link">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Precipitation: 0%</li>
+              <li>Humidity: 77%</li>
+              <li>Wind: 8 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col align-self-center">
+        <div class="row">
+            <div class="col-1">
+                <p>Mon</p>
+                <img src="image/thunderstorm.png" class="weather-icon" />
+                <p>50°F / 10°C</p>
+                </div>
+                <div class="col-2">
+                  <p>Tue</p>
+                  <img src="image/rainy.png" class="weather-icon" />
+                  <p>40°F/4°C</p>
+                </div>
+
+                <div class="col-2">
+                  <p>Wed</p>
+                  <img src="image/snow.png" class="weather-icon" />
+                  <p>32°F/0°C</p>
+                </div>
+
+                <div class="col-2">
+                  <p>Thu</p>
+                  <img
+                    src="image/happysun-behindcloud.png"
+                    class="weather-icon"
+                  />
+                  <p>60°F/15°C</p>
+                </div>
+
+                <div class="col-2">
+                  <p>Fri</p>
+                  <img src="image/cloud-sunlight.png" class="weather-icon" />
+                  <p>70°F/21°C</p>
+                </div>
+
+                <div class="col-2">
+                  <p>Sat</p>
+                  <img src="image/cloud-sunlight.png" class="weather-icon" />
+                  <p>55°F/13°C</p>
+                </div>
+                <div class="col-1">
+                  <p>Sun</p>
+                  <img src="image/cloud-sunlight.png" class="weather-icon" />
+                  <p>55°F/13°C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+    <script>
+      let timePlaceholder = document.querySelector("#date");
+
+      let now = new Date();
+      let hours = now.getHours();
+      if (hours < 10) {
+        hours = `0${hours}`;
+      }
+      let minutes = now.getMinutes();
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      let day = days[now.getDay()];
+      timePlaceholder.innerHTML = `${day} ${hours}:${minutes}`;
+
+      let citySearch = document.querySelector("#search-form");
+      citySearch.addEventListener("submit", cityInput);
+
+      function cityInput(event) {
+        event.preventDefault();
+
+        let cityName = document.querySelector("#city-input");
+        console.log(cityName.value);
+
+        let h1 = document.querySelector("#city");
+        h1.innerHTML = `${cityName.value}`;
+
+        let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&units=metric`;
+
+        axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+      }
+
+      function showTemperature(response) {
+        let temperature = Math.round(response.data.main.temp);
+        console.log(temperature);
+        let cityTemp = document.querySelector("#temperature");
+        cityTemp.innerHTML = `${temperature}`;
+      }
+
+      function diplayTemperature(response) {
+        let temperature = Math.round(response.data.main.temp);
+        let currentTemp = document.querySelector("#current");
+        currentTemp.innerHTML = `${temperature}`;
+      }
+    </script>
+  </body>
+</html>
