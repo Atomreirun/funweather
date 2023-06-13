@@ -19,7 +19,7 @@
       <div class="weather-app">
         <form class="search-form" id="search-form">
           <div class="row">
-            <div class="col-5">
+            <div class="col-7">
               <input
                 type="search"
                 placeholder="Type a city.."
@@ -41,7 +41,7 @@
         <h1 id="city">Raleigh</h1>
         <ul>
           <li id="date"></li>
-          <li>Partly Cloudy</li>
+          <li id="description">Partly Cloudy</li>
         </ul>
         <div class="row">
           <div class="col-6">
@@ -49,6 +49,7 @@
               <img
                 src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                 alt="Cloudy icon"
+                id="icon"
                 class="weather-icon float-left"
               />
               <div class="float-left">
@@ -62,9 +63,9 @@
           </div>
           <div class="col-6">
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 77%</li>
-              <li>Wind: 8 km/h</li>
+              
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
             </ul>
           </div>
         </div>
@@ -153,8 +154,6 @@
         event.preventDefault();
 
         let cityName = document.querySelector("#city-input");
-        console.log(cityName.value);
-
         let h1 = document.querySelector("#city");
         h1.innerHTML = `${cityName.value}`;
 
@@ -166,9 +165,20 @@
 
       function showTemperature(response) {
         let temperature = Math.round(response.data.main.temp);
-        console.log(temperature);
         let cityTemp = document.querySelector("#temperature");
+        let description = document.querySelector("#description");
+        let humidity = document.querySelector("#humidity");
+        let wind = document.querySelector("#wind");
+        let icon = document.querySelector("#icon");
+
         cityTemp.innerHTML = `${temperature}`;
+        description.innerHTML = response.data.main.description;
+        humidity.innerHTML = response.data.main.humidity;
+        wind.innerHTML = response.data.main.wind;
+        icon.setAttribute("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+        icon.setAttribute("alt", response.data.weather[0].description);
+
+        getForecast(response.data.coord);
       }
 
       function diplayTemperature(response) {
@@ -176,11 +186,6 @@
         let currentTemp = document.querySelector("#current");
         currentTemp.innerHTML = `${temperature}`;
       }
-      
     </script>
-    </br>
-    </br>
-    <small>
-        <a href="https://github.com/Atomreirun/funweather" target="_blank">Open-source code</a>, by Arlene Runyon</small>
   </body>
 </html>
