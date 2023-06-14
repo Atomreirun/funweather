@@ -53,8 +53,8 @@
                 class="weather-icon float-left"
               />
               <div class="float-left">
-                <span class="temperature" id="temperature">28</span
-                ><span class="units">
+                <span class="temperature" id="temperature">28</span>
+                 <span class="units">
                   <a href="#" id="celcius-link">°C</a> |
                   <a href="#" id="fahrenheit-link">°F</a>
                 </span>
@@ -76,18 +76,18 @@
             <div class="col-1">
                 <p>Mon</p>
                 <img src="image/thunderstorm.png" class="weather-icon" />
-                <p>50°F / 10°C</p>
-                </div>
+                <p>10°C / 50°F</p>
+              </div>
                 <div class="col-2">
                   <p>Tue</p>
                   <img src="image/rainy.png" class="weather-icon" />
-                  <p>40°F/4°C</p>
+                  <p>4°C/40°F</p>
                 </div>
 
                 <div class="col-2">
                   <p>Wed</p>
                   <img src="image/snow.png" class="weather-icon" />
-                  <p>32°F/0°C</p>
+                  <p>0°C/32°F</p>
                 </div>
 
                 <div class="col-2">
@@ -96,96 +96,32 @@
                     src="image/happysun-behindcloud.png"
                     class="weather-icon"
                   />
-                  <p>60°F/15°C</p>
+                  <p>15°C/60°F</p>
                 </div>
 
                 <div class="col-2">
                   <p>Fri</p>
                   <img src="image/cloud-sunlight.png" class="weather-icon" />
-                  <p>70°F/21°C</p>
+                  <p>21°C/70°F
+                  </p>
                 </div>
 
                 <div class="col-2">
                   <p>Sat</p>
                   <img src="image/cloud-sunlight.png" class="weather-icon" />
-                  <p>55°F/13°C</p>
+                  <p>13°C/55°F</p>
                 </div>
                 <div class="col-1">
                   <p>Sun</p>
                   <img src="image/cloud-sunlight.png" class="weather-icon" />
-                  <p>55°F/13°C</p>
+                  <p>13°C/55°F</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-       </div>
       </div>
     </div>
-    <script>
-      let timePlaceholder = document.querySelector("#date");
-
-      let now = new Date();
-      let hours = now.getHours();
-      if (hours < 10) {
-        hours = `0${hours}`;
-      }
-      let minutes = now.getMinutes();
-      if (minutes < 10) {
-        minutes = `0${minutes}`;
-      }
-
-      let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      let day = days[now.getDay()];
-      timePlaceholder.innerHTML = `${day} ${hours}:${minutes}`;
-
-      let citySearch = document.querySelector("#search-form");
-      citySearch.addEventListener("submit", cityInput);
-
-      function cityInput(event) {
-        event.preventDefault();
-
-        let cityName = document.querySelector("#city-input");
-        let h1 = document.querySelector("#city");
-        h1.innerHTML = `${cityName.value}`;
-
-        let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&units=metric`;
-
-        axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
-      }
-
-      function showTemperature(response) {
-        let temperature = Math.round(response.data.main.temp);
-        let cityTemp = document.querySelector("#temperature");
-        let description = document.querySelector("#description");
-        let humidity = document.querySelector("#humidity");
-        let wind = document.querySelector("#wind");
-        let icon = document.querySelector("#icon");
-
-        cityTemp.innerHTML = `${temperature}`;
-        description.innerHTML = response.data.main.description;
-        humidity.innerHTML = response.data.main.humidity;
-        wind.innerHTML = response.data.main.wind;
-        icon.setAttribute("src",  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-        icon.setAttribute("alt", response.data.weather[0].description);
-
-        getForecast(response.data.coord);
-      }
-
-      function diplayTemperature(response) {
-        let temperature = Math.round(response.data.main.temp);
-        let currentTemp = document.querySelector("#current");
-        currentTemp.innerHTML = `${temperature}`;
-      }
-    </script>
+      <script src="src/app.js"></script>
   </body>
 </html>
