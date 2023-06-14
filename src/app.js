@@ -47,9 +47,9 @@ function showTemperature(response) {
   let icon = document.querySelector("#icon");
 
   cityTemp.innerHTML = `${temperature}`;
-  description.innerHTML = response.data.main.description;
+  description.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = response.data.main.humidity;
-  wind.innerHTML = response.data.main.wind;
+  wind.innerHTML = Math.round(response.data.wind.speed);
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
