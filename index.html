@@ -24,6 +24,7 @@
                 <input
                   type="search"
                   placeholder="Type a city.."
+                  class="form-control"
                   autofocus="on"
                   autocomplete="off"
                   id="city-input"
@@ -39,14 +40,15 @@
               </div>
             </div>
           </form>
-          <h1 id="city">Raleigh</h1>
+          <div class="overview"> 
+            <h1 id="city">Raleigh</h1>
           <ul>
             <li>Last Updated: <span id="date"></span></li>
             <li id="description">Partly Cloudy</li>
           </ul>
           <div class="row">
             <div class="col-6">
-              <div class="clearfix">
+              <div class="clearfix weather-temperature">
                 <img
                   src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                   alt="Cloudy icon"
@@ -54,7 +56,7 @@
                   class="weather-icon float-left"
                 />
                 <div class="float-left">
-                  <span class="temperature" id="temperature"></span>
+                  <strong class="temperature" id="temperature">20</strong>
                   <span class="units">
                     <a href="#" id="celsius-link" class="active">°C</a> |
                     <a href="#" id="fahrenheit-link">°F</a>
@@ -62,21 +64,58 @@
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <ul>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind"></span> km/h</li>
-              </ul>
+          <div class="col-6">
+            <ul>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container"></div>
+      <div class="weather-day-app-wrapper">
+        <div class="weather-day-forecast">
+          <div class="row">
+            <div class="col-2">
+              <p>Mon</p>
+              <img src="image/thunderstorm.png" class="weather-icon" />
+              <p>50/20</p>
+            </div>
+            <div class="col-2">
+              <p>Tue</p>
+              <img src="image/rainy.png" class="weather-icon" />
+              <p>40/4</p>
+            </div>
+
+            <div class="col-2">
+              <p>Wed</p>
+              <img src="image/snow.png" class="weather-icon" />
+              <p>32/45</p>
+            </div>
+
+            <div class="col-2">
+              <p>Thu</p>
+              <img src="image/happysun-behindcloud.png" class="weather-icon" />
+              <p>60/15</p>
+            </div>
+
+            <div class="col-2">
+              <p>Fri</p>
+              <img src="image/cloud-sunlight.png" class="weather-icon" />
+              <p>70/21</p>
+            </div>
+            <div class="col-2">
+              <p>Sat</p>
+              <img src="image/cloud-sunlight.png" class="weather-icon" />
+              <p>55/13</p>
             </div>
           </div>
         </div>
-
-        <small>
-          <a href="https://github.com/Atomreirun/funweather" target="_blank"
-            >Open-source code</a
-          >, by Arlene Runyon</small
-        >
       </div>
+      <small>
+          <a href="https://github.com/Atomreirun/funweather" target="_blank">Open-source code</a>, by Arlene C. Runyon</small>
+      </small>
     </div>
     <script src="src/app.js"></script>
   </body>
