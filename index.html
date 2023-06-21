@@ -15,6 +15,8 @@
     <title>Vanilla Weather Search App</title>
   </head>
   <body>
+    <h2>Weather Forecast</h2>
+    <p></p>
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
@@ -23,7 +25,7 @@
               <div class="col-7">
                 <input
                   type="search"
-                  placeholder="Type a city.."
+                  placeholder="Enter a city.."
                   class="form-control"
                   autofocus="on"
                   autocomplete="off"
@@ -40,12 +42,13 @@
               </div>
             </div>
           </form>
-          <div class="overview"> 
+          <div class="overview">
             <h1 id="city">Raleigh</h1>
-          <ul>
-            <li>Last Updated: <span id="date"></span></li>
-            <li id="description">Partly Cloudy</li>
-          </ul>
+            <ul>
+              <li>Last Updated: <span id="date"></span></li>
+              <li id="description">Partly Cloudy</li>
+            </ul>
+          </div>
           <div class="row">
             <div class="col-6">
               <div class="clearfix weather-temperature">
@@ -71,50 +74,14 @@
             </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container"></div>
-      <div class="weather-day-app-wrapper">
-        <div class="weather-day-forecast">
-          <div class="row">
-            <div class="col-2">
-              <p>Mon</p>
-              <img src="image/thunderstorm.png" class="weather-icon" />
-              <p>50/20</p>
-            </div>
-            <div class="col-2">
-              <p>Tue</p>
-              <img src="image/rainy.png" class="weather-icon" />
-              <p>40/4</p>
-            </div>
-
-            <div class="col-2">
-              <p>Wed</p>
-              <img src="image/snow.png" class="weather-icon" />
-              <p>32/45</p>
-            </div>
-
-            <div class="col-2">
-              <p>Thu</p>
-              <img src="image/happysun-behindcloud.png" class="weather-icon" />
-              <p>60/15</p>
-            </div>
-
-            <div class="col-2">
-              <p>Fri</p>
-              <img src="image/cloud-sunlight.png" class="weather-icon" />
-              <p>70/21</p>
-            </div>
-            <div class="col-2">
-              <p>Sat</p>
-              <img src="image/cloud-sunlight.png" class="weather-icon" />
-              <p>55/13</p>
-            </div>
-          </div>
-        </div>
+        <p></p>
+        <div class="weather-forecast" id="forecast"></div>
       </div>
       <small>
-          <a href="https://github.com/Atomreirun/funweather" target="_blank">Open-source code</a>, by Arlene C. Runyon</small>
+        <a href="https://github.com/Atomreirun/funweather" target="_blank"
+          >Open-source code</a
+        >
+        by Arlene Runyon
       </small>
     </div>
     <script src="src/app.js"></script>
