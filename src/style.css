@@ -7,6 +7,7 @@ h2 {
   text-align: center;
   padding-top: 20px;
   color: #885df1;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 h1 {
   color: #885df1;
@@ -40,10 +41,10 @@ li {
   border: 1px solid #7c7c7c;
   padding: 20px;
   border-radius: 10px;
-  background: radial-gradient(
-    circle at 0.7% 1%,
-    rgb(215, 248, 247) 0%,
-    rgb(102, 188, 239) 100.2%
+  background: linear-gradient(
+    171.8deg,
+    rgb(238, 156, 167) 13.8%,
+    rgb(246, 204, 162) 82.6%
   );
 }
 
