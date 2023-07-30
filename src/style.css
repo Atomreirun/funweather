@@ -1,5 +1,5 @@
 body {
-  background: url(https://png.pngtree.com/element_our/sm/20180321/sm_02428c77c171c061c522f983fc38af4a.jpg);
+  background: url(https://images.unsplash.com/photo-1599209248411-5124adbb1da2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
   font-family: arial, sans-serif;
 }
 h2 {
@@ -43,7 +43,12 @@ li {
   border: 1px solid #7c7c7c;
   padding: 20px;
   border-radius: 10px;
-  background: rgb(156, 211, 156);
+  background: linear-gradient(
+    110.9deg,
+    rgb(44, 221, 239) 1.1%,
+    rgb(14, 191, 210) 37.6%,
+    rgb(8, 127, 140) 99.2%
+  );
 }
 
 .weather-temperature img {
